@@ -1,0 +1,7 @@
+version: '3.4'
+
+services:
+  webapplication13:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+
