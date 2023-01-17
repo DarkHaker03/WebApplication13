@@ -1,6 +1,18 @@
 version: '3.4'
 
 services:
+  bd: 
+    image: mysql
+    restart: always
+    volumes:
+      - ./tmp/db:/var/lib/mysql
+    environment: 
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: trialbd
+    ports:
+      - "8101:3306"
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+
   webapplication13:
     image: ${DOCKER_REGISTRY-}webapplication13
     build:
@@ -8,18 +20,6 @@ services:
       dockerfile: WebApplication13/Dockerfile
     ports:
       - "5000:80"
-  
-  bd: 
-    image: mysql
-    restart: always
-    volumes:
-      - ./tmp/db:/var/lib/mysql
-    environment: 
-      MYSQL_DATABASE: tialdbd
-      MYSQL_ROOT_PASSWORD: root
-    ports:
-      - "8101:3306"
-    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
   
   proxy:
     image: nginx:alpine
