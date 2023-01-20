@@ -7,7 +7,7 @@ services:
     volumes:
       - ./tmp/db:/var/lib/mysql
     environment: 
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root23
       MYSQL_DATABASE: trialbd
     ports:
       - "8101:3306"
